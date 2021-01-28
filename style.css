@@ -170,6 +170,16 @@ img {
 
 /* Gallery Section */
 
+.main-frame {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(100px, 293px));
+  justify-content: center;
+  grid-gap: 15px;
+  padding-top: 80px;
+}
+
+
 .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -242,9 +252,91 @@ img {
     animation: loader 500ms linear infinite;
 }
 
-/* Media Query */
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 293px));
+  justify-content: center;
+  grid-gap: 15px;
+  padding-top: 80px;
+}
+.post {
+  cursor: pointer;
+  position: relative;
+  display: block;
+}
+.post-image {
+  margin: 0;
+}
+.post-image img {
+  width: 100%;
+  vertical-align: top;
+}
+.post-overlay {
+  background: rgba(0, 49, 83, .8);
+  position: absolute;
+  left: 33%;
+  right: 33%;
+  bottom: 33%;
+  top: 33%;
+  display: flex;
+  margin: 5px;
+ 
+  align-items: center;
+  justify-content: center; 
+  color: white;
+  text-align: center;
+}
+.post:hover .post-overlay {
+  background: rgba(0, 0, 0, .0);
+  display: flex;
+}
+.post-likes, .post-comments {
+  width: 81px;
+  margin: 27px;
+  font-weight: bold;
+  text-align: center;
 
-@media screen and (max-width: 40rem) {
+  display: inline-block;
+
+  display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.footer-icons {
+  width: 80px;
+  margin: 5px;
+  font-weight: bold;
+  text-align: center;
+
+  display: inline-block;
+
+  display: inline-block;
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.footer-counter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+
+}
+
+/* Spinner Animation */
+
+@keyframes loader {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Media Query 40 rem orig*/
+
+@media only screen and (max-width: 600px) {
     .profile {
         display: flex;
         flex-wrap: wrap;
@@ -331,99 +423,23 @@ img {
     .header .logo .logo-texto {
         display: none;
     }
-}
 
-.post-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(100px, 293px));
-  justify-content: center;
-  grid-gap: 15px;
-  padding-top: 80px;
-}
-.post {
-  cursor: pointer;
-  position: relative;
-  display: block;
-}
-.post-image {
-  margin: 0;
-}
-.post-image img {
-  width: 100%;
-  vertical-align: top;
-}
-.post-overlay {
-  background: rgba(0, 49, 83, .8);
-  position: absolute;
-  left: 33%;
-  right: 33%;
-  bottom: 33%;
-  top: 33%;
-  display: flex;
-  margin: 5px;
- 
-  align-items: center;
-  justify-content: center; 
-  color: white;
-  text-align: center;
-}
-.post:hover .post-overlay {
-  background: rgba(0, 0, 0, .0);
-  display: flex;
-}
-.post-likes, .post-comments {
-  width: 81px;
-  margin: 27px;
-  font-weight: bold;
-  text-align: center;
-
-  display: inline-block;
-
-  display: inline-block;
-    font-size: 1.5rem;
-    font-weight: 600;
-    line-height: 20px;
-}
-
-
-.footer-icons {
-  width: 80px;
-  margin: 5px;
-  font-weight: bold;
-  text-align: center;
-
-  display: inline-block;
-
-  display: inline-block;
-    font-size: 1.7rem;
-    font-weight: 600;
-}
-/* Spinner Animation */
-
-@keyframes loader {
-    to {
-        transform: rotate(360deg);
+    .post-overlay {
+        background: rgba(0, 49, 83, .8);
+        position: absolute;
+        left: 20%;
+        right: 20%;
+        bottom: 20%;
+        top: 20%;
+        display: flex;
+        margin: 5px;
+        align-items: center;
+        justify-content: center; 
+        color: white;
+        text-align: center;
     }
 }
 
-
-@media only screen and (max-width: 600px) {
- .post-overlay {
-  background: rgba(0, 49, 83, .8);
-  position: absolute;
-  left: 20%;
-  right: 20%;
-  bottom: 20%;
-  top: 20%;
-  display: flex;
-  margin: 5px;
- 
-  align-items: center;
-  justify-content: center; 
-  color: white;
-  text-align: center;
-}
-}
 /*
 
 The following code will only run if your browser supports CSS grid.
