@@ -286,6 +286,22 @@ img {
   color: white;
   text-align: center;
 }
+.post-overlay2 {
+  background: rgba(1, 1, 1, .8);
+  position: absolute;
+  left: 100%;
+  right: 100%;
+  bottom: 100%;
+  top: 100%;
+  display: flex;
+  margin: 5px;
+ 
+  align-items: center;
+  justify-content: center; 
+  color: white;
+  text-align: center;
+}
+
 .post:hover .post-overlay {
   background: rgba(0, 0, 0, .0);
   display: flex;
@@ -437,6 +453,22 @@ img {
         justify-content: center; 
         color: white;
         text-align: center;
+    }
+
+    .post-overlay2 {
+      background: rgba(1, 1, 1, .8);
+      position: absolute;
+      left: 100%;
+      right: 100%;
+      bottom: 100%;
+      top: 100%;
+      display: flex;
+      margin: 5px;
+     
+      align-items: center;
+      justify-content: center; 
+      color: white;
+      text-align: center;
     }
 }
 
