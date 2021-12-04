@@ -71,7 +71,7 @@ img {
 /* Profile Section */
 
 .profile {
-    padding: 5rem 0;
+    padding: 1rem 1rem;
 }
 
 .profile::after {
@@ -90,25 +90,36 @@ img {
 }
 
 .profile-image img {
-    border-radius: 50%;
+    width: auto;
+    /*border-radius: 50%;*/
 }
 
 .profile-user-settings,
 .profile-stats,
 .profile-bio {
-    float: center;
-    text-align: center;
+    display: grid;
+    width: 100%;
+    grid-column:2/4;
+    justify-content: safe left;
+    grid-gap: 15px;
+    padding-top: 80px;
+    /*float: center;*/
+    text-align: left;
     /*width: calc(66.666% - 2rem);*/
+
 }
 
 .profile-user-settings {
-    margin-top: 1.1rem;
+    justify-content: safe left;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .profile-user-name {
-    display: inline-block;
-    font-size: 5.0rem;
-    font-weight: 300;
+    display: inline-grid;
+    text-align:  left;
+    font-size: 2.5rem;
+    font-weight: 500;
 }
 
 .profile-edit-btn {
@@ -126,7 +137,8 @@ img {
 }
 
 .profile-stats {
-    margin-top: 2.3rem;
+    margin-top: 0rem;
+    margin-bottom: 2.0rem;
 }
 
 .profile-stats li {
@@ -252,6 +264,29 @@ img {
     animation: loader 500ms linear infinite;
 }
 
+.tthumb-post-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 293px));
+  justify-content: center;
+  grid-gap: 15px;
+  padding-top: 80px;
+}
+
+.tthumb-text {
+  grid-column:2/4;
+  position: relative;
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 100rem;
+}
+
+.tthumb-image{
+  grid-column:1/2;
+  cursor: pointer;
+  position: relative;
+  display: block;
+}
+
 .post-list {
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, 293px));
@@ -356,7 +391,7 @@ img {
     .profile {
         display: flex;
         flex-wrap: wrap;
-        padding: 4rem 0;
+        padding: 1rem 0;
     }
 
     .profile::after {
@@ -372,14 +407,15 @@ img {
     }
 
     .profile-image img {
-        width: 7.7rem;
+        width: auto;
     }
 
     .profile-user-settings {
-        flex-basis: calc(100% - 10.7rem);
+        /*flex-basis: calc(100% - 5.7rem);
         display: flex;
-        flex-wrap: wrap;
-        margin-top: 1rem;
+        flex-wrap: wrap;*/
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
     }
 
     .profile-user-name {
