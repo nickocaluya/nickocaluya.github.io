@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Publications</title>
+
+  <!-- BibTeX parser -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.js"></script>
+  <!-- Or include minified version -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.min.js"></script>
+
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+  <h1>Publications</h1>
+
+  <!-- Filters -->
+  <div class="filters">
+    <input type="text" id="search" placeholder="Search title, author, keyword...">
+    
+    <select id="yearFilter">
+      <option value="">All Years</option>
+    </select>
+
+    <select id="keywordFilter">
+      <option value="">All Keywords</option>
+    </select>
+  </div>
+
+  <!-- BibTeX source -->
+  <bibtex src="assets/publications.bib"></bibtex>
+
+  <!-- Template -->
+  <div class="bibtex_template">
+    <div class="pub" data-year="year" data-keywords="keywords">
+      <img class="thumb" src="assets/thumbnail.png" onerror="this.style.display='none'">
+
+      <div class="info">
+        <div class="title"></div>
+        <div class="author"></div>
+        <div>
+          <span class="year"></span>
+        </div>
+        <div class="keywords"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="bibtex_display"></div>
+
+  <script>
+    function populateFilters() {
+      const years = new Set();
+      const keywords = new Set();
+
+      document.querySelectorAll(".pub").forEach(pub => {
+        const y = pub.getAttribute("year");
+        if (y) years.add(y);
+
+        const kw = pub.getAttribute("keywords");
+        if (kw) {
+          kw.split(",").forEach(k => keywords.add(k.trim()));
+        }
+      });
+
+      const yearSelect = document.getElementById("yearFilter");
+      [...years].sort((a,b)=>b-a).forEach(y => {
+        let opt = document.createElement("option");
+        opt.value = y;
+        opt.textContent = y;
+        yearSelect.appendChild(opt);
+      });
+
+      const kwSelect = document.getElementById("keywordFilter");
+      [...keywords].sort().forEach(k => {
+        let opt = document.createElement("option");
+        opt.value = k;
+        opt.textContent = k;
+        kwSelect.appendChild(opt);
+      });
+
+      console.log(years.size);
+    }
+
+    function applyFilters() {
+      const search = document.getElementById("search").value.toLowerCase();
+      const year = document.getElementById("yearFilter").value;
+      const keyword = document.getElementById("keywordFilter").value;
+
+      document.querySelectorAll(".pub").forEach(pub => {
+        const text = pub.innerText.toLowerCase();
+        const pubYear = pub.getAttribute("data-year");
+        const pubKeywords = pub.getAttribute("data-keywords") || "";
+
+        const matchSearch = text.includes(search);
+        const matchYear = !year || pubYear === year;
+        const matchKeyword = !keyword || pubKeywords.includes(keyword);
+
+        pub.style.display = (matchSearch && matchYear && matchKeyword)
+          ? "flex" : "none";
+      });
+    }
+
+    // Wait for BibTeX render
+    window.onload = () => {
+      console.log("HERE");
+      setTimeout(() => {
+        populateFilters();
+        
+
+        document.getElementById("search").addEventListener("input", applyFilters);
+        document.getElementById("yearFilter").addEventListener("change", applyFilters);
+        document.getElementById("keywordFilter").addEventListener("change", applyFilters);
+      }, 500);
+    };
+  </script>
+</body>
+</html>

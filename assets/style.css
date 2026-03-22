@@ -1,0 +1,46 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.filters {
+  margin-bottom: 20px;
+}
+
+.filters input, .filters select {
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.pub {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.thumb {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+}
+
+.info {
+  flex: 1;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.author {
+  color: #555;
+}
+
+.keywords {
+  font-size: 0.9em;
+  color: #777;
+}
