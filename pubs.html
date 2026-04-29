@@ -142,7 +142,7 @@
 
         card.innerHTML = `
           <div class="thumb-wrapper">
-            <img src="${p.thumbnail}" onerror="this.src='assets/default.png'">
+            <img src="${p.thumbnail}" onerror="this.src='assets/thumbnail.png'">
           </div>
 
           <div class="content">
@@ -161,6 +161,7 @@
       : `<span class="no-link">No DOI available</span>`
   }
 </div>
+
             <!--div class="abstract"-->
             <!--${p.raw?.abstractNote || "No abstract available."}-->
             <!--/div-->
