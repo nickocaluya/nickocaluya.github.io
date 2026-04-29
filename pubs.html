@@ -3,84 +3,99 @@
 <head>
   <meta charset="utf-8">
   <title>Publications</title>
-
-  <!-- BibTeX parser -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.js"></script>
-  <!-- Or include minified version -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.min.js"></script>
-
   <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
-  <h1>Publications</h1>
+  <header>
+    <h1>Publications</h1>
 
-  <!-- Filters -->
-  <div class="filters">
-    <input type="text" id="search" placeholder="Search title, author, keyword...">
-    
-    <select id="yearFilter">
-      <option value="">All Years</option>
-    </select>
+    <div class="filters">
+      <input type="text" id="search" placeholder="Search publications...">
 
-    <select id="keywordFilter">
-      <option value="">All Keywords</option>
-    </select>
-  </div>
+      <select id="yearFilter">
+        <option value="">All Years</option>
+      </select>
 
-  <!-- BibTeX source -->
-  <bibtex src="assets/publications.bib"></bibtex>
-
-  <!-- Template -->
-  <div class="bibtex_template">
-    <div class="pub" data-year="year" data-keywords="keywords">
-      <img class="thumb" src="assets/thumbnail.png" onerror="this.style.display='none'">
-
-      <div class="info">
-        <div class="title"></div>
-        <div class="author"></div>
-        <div>
-          <span class="year"></span>
-        </div>
-        <div class="keywords"></div>
-      </div>
+      <select id="keywordFilter">
+        <option value="">All Keywords</option>
+      </select>
     </div>
-  </div>
+  </header>
 
-  <div id="bibtex_display"></div>
+  <main id="pubs"></main>
 
   <script>
-    function populateFilters() {
-      const years = new Set();
-      const keywords = new Set();
+    let allPubs = [];
 
-      document.querySelectorAll(".pub").forEach(pub => {
-        const y = pub.getAttribute("year");
-        if (y) years.add(y);
-
-        const kw = pub.getAttribute("keywords");
-        if (kw) {
-          kw.split(",").forEach(k => keywords.add(k.trim()));
-        }
+    fetch('./assets/publications.json')
+      .then(res => res.json())
+      .then(data => {
+        allPubs = data.map(normalize);
+        initFilters(allPubs);
+        render(allPubs);
       });
 
-      const yearSelect = document.getElementById("yearFilter");
-      [...years].sort((a,b)=>b-a).forEach(y => {
-        let opt = document.createElement("option");
-        opt.value = y;
-        opt.textContent = y;
-        yearSelect.appendChild(opt);
+        function normalize(p) {
+      let year = "Unknown";
+
+      // CSL-JSON format (Zotero default)
+      if (p.issued && p.issued["date-parts"]) {
+        year = p.issued["date-parts"][0][0]; // first year value
+      }
+
+      // Fallback (if other formats exist)
+      else if (p.date) {
+        year = (p.date.match(/\d{4}/) || [])[0] || "Unknown";
+      }
+
+      const authors = (p.creators || p.author || [])
+  .map(a => {
+    if (a.family) return `${a.given} ${a.family || ""}`; // CSL format
+    return `${a.firstName || ""} ${a.lastName || ""}`;
+  })
+  .join(", ");
+
+      const keywords = (p.tags || p.keyword || [])
+        .map(k => k.tag || k);
+
+      const thumbnail =
+        p.thumbnail ||
+        p.attachments?.[0]?.url ||
+        "assets/thumbnail.png";
+
+        const doi =
+  p.DOI ||                     // sometimes exists directly
+  p.doi ||                     // lowercase variant
+  (p.URL && p.URL.includes("doi.org") ? p.URL : null);
+
+      return {
+        title: p.title || "Untitled",
+        authors,
+        year: String(year),
+        keywords,
+        thumbnail,
+        doi,
+        abstract: p.abstractNote || p.abstract || "",
+        raw: p
+      };
+    }
+
+    function initFilters(pubs) {
+      const years = [...new Set(pubs.map(p => p.year))].sort((a,b)=>b-a);
+      const keywords = [...new Set(pubs.flatMap(p => p.keywords))].sort();
+
+      years.forEach(y => {
+        document.getElementById("yearFilter").add(new Option(y, y));
       });
 
-      const kwSelect = document.getElementById("keywordFilter");
-      [...keywords].sort().forEach(k => {
-        let opt = document.createElement("option");
-        opt.value = k;
-        opt.textContent = k;
-        kwSelect.appendChild(opt);
+      keywords.forEach(k => {
+        document.getElementById("keywordFilter").add(new Option(k, k));
       });
 
-      console.log(years.size);
+      document.getElementById("search").oninput = applyFilters;
+      document.getElementById("yearFilter").onchange = applyFilters;
+      document.getElementById("keywordFilter").onchange = applyFilters;
     }
 
     function applyFilters() {
@@ -88,32 +103,88 @@
       const year = document.getElementById("yearFilter").value;
       const keyword = document.getElementById("keywordFilter").value;
 
-      document.querySelectorAll(".pub").forEach(pub => {
-        const text = pub.innerText.toLowerCase();
-        const pubYear = pub.getAttribute("data-year");
-        const pubKeywords = pub.getAttribute("data-keywords") || "";
+      const filtered = allPubs.filter(p => {
+        const matchSearch =
+          p.title.toLowerCase().includes(search) ||
+          p.authors.toLowerCase().includes(search) ||
+          p.keywords.join(" ").toLowerCase().includes(search);
 
-        const matchSearch = text.includes(search);
-        const matchYear = !year || pubYear === year;
-        const matchKeyword = !keyword || pubKeywords.includes(keyword);
+        const matchYear = !year || p.year === year;
+        const matchKeyword = !keyword || p.keywords.includes(keyword);
 
-        pub.style.display = (matchSearch && matchYear && matchKeyword)
-          ? "flex" : "none";
+        return matchSearch && matchYear && matchKeyword;
       });
+
+      render(filtered);
     }
 
-    // Wait for BibTeX render
-    window.onload = () => {
-      console.log("HERE");
-      setTimeout(() => {
-        populateFilters();
-        
+  
+  function render(pubs) {
+  const container = document.getElementById("pubs");
+  container.innerHTML = "";
 
-        document.getElementById("search").addEventListener("input", applyFilters);
-        document.getElementById("yearFilter").addEventListener("change", applyFilters);
-        document.getElementById("keywordFilter").addEventListener("change", applyFilters);
-      }, 500);
-    };
-  </script>
+  const grouped = {};
+  pubs.forEach(p => {
+    if (!grouped[p.year]) grouped[p.year] = [];
+    grouped[p.year].push(p);
+  });
+
+  Object.keys(grouped)
+    .sort((a,b)=>b-a)
+    .forEach(year => {
+      const section = document.createElement("section");
+
+      section.innerHTML = `<h2 class="year">${year}</h2>`;
+      
+      grouped[year].forEach(p => {
+        const card = document.createElement("div");
+        card.className = "row-card";
+
+        card.innerHTML = `
+          <div class="thumb-wrapper">
+            <img src="${p.thumbnail}" onerror="this.src='assets/default.png'">
+          </div>
+
+          <div class="content">
+            <div class="title">${p.title}</div>
+            <div class="authors">${p.authors}</div>
+            
+
+            <div class="links">
+  ${
+    p.doi
+      ? `<a href="${p.doi.startsWith("http") ? p.doi : "https://doi.org/" + p.doi}"
+           target="_blank"
+           class="doi-link">
+           View Paper ↗
+         </a>`
+      : `<span class="no-link">No DOI available</span>`
+  }
+</div>
+            <!--div class="abstract"-->
+            <!--${p.raw?.abstractNote || "No abstract available."}-->
+            <!--/div-->
+
+            <div class="tags">
+              ${p.keywords.map(k => `<span class="tag">${k}</span>`).join("")}
+            </div>
+          </div>
+        `;
+
+        // Tag click filter
+        card.querySelectorAll(".tag").forEach(tag => {
+          tag.onclick = () => {
+            document.getElementById("keywordFilter").value = tag.innerText;
+            applyFilters();
+          };
+        });
+
+        section.appendChild(card);
+      });
+
+      container.appendChild(section);
+    });
+}
+</script>
 </body>
 </html>

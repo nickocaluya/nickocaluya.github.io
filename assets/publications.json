@@ -1,0 +1,932 @@
+[
+	{
+		"id": "http://zotero.org/users/19839982/items/EFX97QUG",
+		"type": "paper-conference",
+		"abstract": "Alternative human computer interfaces (HCIs) for games have been shown to engage the player in more meaningful play. This research aims to develop a real-time tactics game (RTT) and utilize an eye-tracking device (ETD) as the sole input device. Players are faced with a game environment with the usual features of an RTT game: controllable characters, intelligent enemies, path-finding techniques, and random event triggers. For player input, normal clicks or selections are replaced by gazes and cursor movements by saccades. However, a restricting factor in developing games for ETDs is the cost of the ETDs themselves. This was addressed with a cost-effective solution using an open-source eye-tracking software developed by the Information Technology University of Copenhagen (ITU) and a web camera. Eye detection, calibration, and tracking algorithms will be used to enhance the game experience. In the end, the game‟s success was measured using the following criteria: how well the ETD responds to players' eye movements, how much pleasure the players experience using the ETD as an input device, and if the cost-effective ETD solution is indeed a feasible setup for an RTT game. The game design was rated 3.83 out of 5 overall, which was consistent with the evaluations of gameplay and mechanics. Although, the ETD as interface was rated as challenging, testers still preferred the mouse better as of the moment. The development between the game and the input device is an area that needs improvement.",
+		"event-place": "Manila, Philippines",
+		"event-title": "Philippine Computing Science Congress",
+		"title": "Developing a Real-time Tactics Game Using an Optimized Cost-Effective Eye-Tracking Device",
+		"URL": "https://alls.ateneo.edu/wp-content/uploads/2013/02/ADDU-Presentation-2013.pdf",
+		"author": [
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Mapua",
+				"given": "Juan Carlos"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2013",
+					3,
+					7
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/KLCJ6634",
+		"type": "paper-conference",
+		"abstract": "We present work on a tablet-­ and smartphone­-based Augmented Reality game application for learning Philippine History. This paper highlights the design of the game application with regards to its educational content, game mechanics, and user interface, discussing how these elements combine to enjoin players to learn about Philippine history while visiting the actual historical locations situated in Intramuros, Manila.",
+		"container-title": "Proceedings of the 23rd International Conference on Computers in Education",
+		"event-place": "Hangzhou, China",
+		"event-title": "International Conference on Computers in Education",
+		"page": "489-498",
+		"publisher": "Asia-Pacific Society for Computers in Education",
+		"title": "Igpaw: Intramuros -- Design of an Augmented Reality Game for Philippine History",
+		"URL": "https://library.apsce.net/index.php/ICCE/article/view/3252",
+		"author": [
+			{
+				"family": "Rodrigo",
+				"given": "Ma. Mercedes T."
+			},
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Diy",
+				"given": "Walfrido David III A."
+			},
+			{
+				"family": "Vidal",
+				"given": "Eric Cesar Jr. E."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2015",
+					11,
+					30
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/BKHQKHVK",
+		"type": "paper-conference",
+		"abstract": "We present Mobile Augmented-Reality Games for Instructional Support (MAGIS), a framework for the development of mobile augmented-reality (AR) games for education. The framework supports off-the-shelf, state-of-the-art technologies that enable AR tracking and rendering on consumer-level mobile devices, and integrates these technologies with content generation tools that simplify the development of educational AR games, especially those that extensively use narrative-based game design and player-location tracking such as location-based historical or museum adventure games. We use Igpaw: Intramuros, a proof-of-concept game developed using MAGIS, to help describe the current state of the framework, and we briefly outline future development plans.",
+		"collection-title": "VRCAI '16",
+		"container-title": "Proceedings of the 3rd Asia-Europe Symposium on Simulation and Serious Gaming",
+		"DOI": "doi.org/10.1145/3014033.3014036",
+		"event-place": "Zhuhai, China",
+		"event-title": "ACM SIGGRAPH Conference on Virtual-Reality Continuum and Its Applications in Industry",
+		"ISBN": "978-1-4503-4693-1",
+		"page": "191-194",
+		"publisher": "Association for Computing Machinery",
+		"publisher-place": "New York, NY, USA",
+		"title": "MAGIS: Mobile Augmented-reality Games for Instructional Support",
+		"URL": "https://dl.acm.org/doi/10.1145/3014033.3014036",
+		"volume": "1",
+		"author": [
+			{
+				"family": "Vidal",
+				"given": "Eric Cesar Jr. E."
+			},
+			{
+				"family": "Ty",
+				"given": "Jayzon F."
+			},
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Rodrigo",
+				"given": "Ma. Mercedes T."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2016",
+					12,
+					3
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/6N47SQ3S",
+		"type": "paper-conference",
+		"abstract": "We investigate the extent to which Augmented Reality can contribute to effectiveness and enjoyment in the context of history-game-based learning. This paper presents a series of usability tests of a mobile Augmented Reality game application for learning Philippine history, Igpaw: Intramuros, with representatives of the game’s target audience. These tests discovered issues that compromised player enjoyment, including fatigue during gameplay, hurdles in learning AR-specific game mechanics, game repetitiveness, and outdoor safety concerns, in addition to minor technical issues. Nevertheless, the tests show the game’s high effectivity in teaching Philippine history.",
+		"container-title": "Proceedings of the 24th International Conference on Computers in Education",
+		"DOI": "10.58459/icce.2016.1264",
+		"event-place": "Mumbai, India",
+		"event-title": "International Conference on Computer Education",
+		"page": "442-447",
+		"publisher": "Asia-Pacific Society for Computers in Education",
+		"title": "Usability Study of an Augmented Reality Game for Philippine History",
+		"URL": "https://library.apsce.net/index.php/ICCE/article/view/1264",
+		"author": [
+			{
+				"family": "Rodrigo",
+				"given": "Ma. Mercedes T."
+			},
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Vidal",
+				"given": "Eric Cesar Jr. E."
+			},
+			{
+				"family": "Agapito",
+				"given": ""
+			},
+			{
+				"family": "Diy",
+				"given": "Walfrido David III A."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2016",
+					11,
+					28
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/D6VSFEUH",
+		"type": "article-journal",
+		"abstract": "This research presents the results of the initial evaluation of MotionAR: an augmented reality (AR) based motion graphing application for physics classes. MotionAR uses AR trackers to measure relative motion between objects, hence producing a motion graph. The subject of the evaluation is an improved version of our application that addresses recommendations from the first prototype. Among these recommendations were: the use of words instead of arrows to identify targets, the use of the Cartesian coordinate system, and previews of the displacement vs. time, velocity vs. time and acceleration vs. time graphs. In-service teachers used a 10-item questionnaire for evaluation. The teacher-evaluators come from diverse educational backgrounds (rural and urban schools, 0 to 24 years in teaching, no e-learning model in school vs 1:1 student-to-tablet PC ratio, science vs. non-science majors) which makes the initial evaluation a good baseline data. This ongoing research will present the lessons learned from the evaluation, including insights in developing AR applications for physics classes, and recommendations for teaching motion graphs utilizing AR.",
+		"collection-title": "GIREP-ICPE-EPEC '17",
+		"container-title": "Journal of Physics: Conference Series",
+		"DOI": "10.1088/1742-6596/1286/1/012051",
+		"issue": "1",
+		"page": "1-9",
+		"publisher": "IOP Publishing",
+		"title": "Teachers' Evaluation of Augmented Reality-Based Motion Graphing Motion",
+		"volume": "1286",
+		"author": [
+			{
+				"family": "Collado",
+				"given": "Resty C."
+			},
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Santos",
+				"given": "Marc Ericson C."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2019",
+					8
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/XPYMUCMT",
+		"type": "paper-conference",
+		"abstract": "Work space simulations help trainees acquire skills necessary to perform their tasks efficiently without disrupting the workflow, forgetting important steps during a procedure, or the location of important information. This training can be conducted in Augmented and Virtual Reality (AR, VR) to enhance its effectiveness and speed. When the skills are transferred to the actual application, it is referred to as positive training transfer. However, thus far, it is unclear which training, AR or VR, achieves better results in terms of positive training transfer. We compare the effectiveness of AR and VR for spatial memory training in a control-room scenario, where users have to memorize the location of buttons and information displays in their surroundings. We conducted a within-subject study with 16 participants and evaluated the impact the training had on short-term and long-term memory. Results of our study show that VR outperformed AR when tested in the same medium after the training. In a memory transfer test conducted two days later AR outperformed VR. Our findings have implications on the design of future training scenarios and applications.",
+		"container-title": "Proceedings of the 2018 IEEE Conference on Virtual Reality and 3D User Interfaces (VR)",
+		"DOI": "10.1109/VR.2018.8447561",
+		"event-place": "Tuebingen/Reutlingen, Germany",
+		"event-title": "2018 IEEE Conference on Virtual Reality and 3D User Interfaces (VR)",
+		"page": "387-393",
+		"publisher": "IEEE",
+		"title": "Transferability of Spatial Maps: Augmented Versus Virtual Reality Training",
+		"URL": "https://ieeexplore.ieee.org/document/8447561",
+		"author": [
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Plopski",
+				"given": "Alexander"
+			},
+			{
+				"family": "Ty",
+				"given": "Jayzon F."
+			},
+			{
+				"family": "Sandor",
+				"given": "Christian"
+			},
+			{
+				"family": "Taketomi",
+				"given": "Takafumi"
+			},
+			{
+				"family": "Kato",
+				"given": "Hirokazu"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2018",
+					3,
+					18
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/P2SFHXQR",
+		"type": "article-journal",
+		"abstract": "We present Mobile Augmented-Reality Games for Instructional Support (MAGIS), a framework for the development of mobile augmented-reality (AR) games for education. The framework supports off-the-shelf, state-of-the-art technologies that enable AR tracking and rendering on consumer-level mobile devices, and integrates these technologies with content-generation tools that simplify the development of educational AR games, especially those that extensively use narrative-based game design and player-location tracking such as location-based historical or museum adventure games. We use Igpaw: Intramuros, a proof-of-concept game developed using MAGIS, to help describe the current state of the framework and to show its efficacy for implementing outdoor location-based educational games, and we briefly outline future development plans to improve MAGIS’ AR support (especially those involving indoor scenarios) as well as to improve the instructional design and authoring phases of AR applications written using this framework.",
+		"container-title": "Interactive Learning Environments",
+		"DOI": "doi.org/10.1080/10494820.2018.1504305",
+		"ISSN": "1049-4820",
+		"issue": "7",
+		"page": "895-907",
+		"publisher": "Taylor and Francis / Routledge",
+		"title": "MAGIS: Mobile Augmented-reality Games for Instructional Support",
+		"URL": "https://www.tandfonline.com/doi/abs/10.1080/10494820.2018.1504305",
+		"volume": "27",
+		"author": [
+			{
+				"family": "Vidal",
+				"given": "Eric Cesar Jr. E."
+			},
+			{
+				"family": "Ty",
+				"given": "Jayzon F."
+			},
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Rodrigo",
+				"given": "Ma. Mercedes T."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2019"
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/4E2C9SWZ",
+		"type": "paper-conference",
+		"abstract": "Localized weather reporting based on human observation is a skill practiced by fishermen, seafarers, airport ground staff, among others. Weather reporting largely depends on accurately identifying cloud types, and judging visibility and distances. This skill is developed by first-hand experience of various weather phenomena. As such, beginners would have difficulty practicing this reporting task without experiencing the phenomena, without proper guidance of experts, and without appropriate tools to support their learning. We present Kantenbouki VR, a virtual reality authoring tool, which can solve various issues in the process of learning weather reporting based on human observation. Using a 360° camera capture as an image background in the application, users can create annotations via freeform drawings accompanied by a cloud type label. To test our idea, we conducted an exploratory design study. Observations and results show that users learned how to use the system quickly, and approached the annotation tasks differently. Features that can be improved include the fidelity of the cloud images, as well as mapping of actions to controller buttons.",
+		"container-title": "Proceedings of the 2019 IEEE Conference on Virtual Reality and 3D User Interfaces (VR)",
+		"DOI": "10.1109/VR.2019.8798216",
+		"event-place": "Osaka, Japan",
+		"event-title": "2019 IEEE Conference on Virtual Reality and 3D User Interfaces (VR)",
+		"ISBN": "978-1-7281-1377-7",
+		"ISSN": "2642-5254",
+		"page": "866-867",
+		"publisher": "IEEE",
+		"title": "Kantenbouki VR: A Virtual Reality Authoring Tool for Learning Localized Weather Reporting",
+		"URL": "https://ieeexplore.ieee.org/abstract/document/8798216",
+		"author": [
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Santos",
+				"given": "Marc Ericson C."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2019",
+					3,
+					23
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/3DZNK34X",
+		"type": "article-journal",
+		"abstract": "One of the main targets of criticism of head-mounted displays (HMDs) is the field of view (FOV) size, whether in virtual or augmented reality. This limitation is prominent with optical see-through head-mounted displays (OST-HMD), as those with narrow overlay FOV (OFOV) sizes only provide a small window to view virtual objects. We investigated if restricting this OFOV negatively affects a user’s ability to memorize spatial locations in a simulation of a work environment, and consequently, long-term memory transfer to an equivalent scenario in the real world two days later. To find empirical evidence, we conducted a within-subjects experiment with 18 participants performing in three phases with an OST-HMD, simulated on an immersive HMD. For each phase, they viewed the training scenario with a different OFOV size of the augmentable area (30°, 70°, 110° diagonal). Results from recall tests showed that smaller OFOV size did not significantly affect user’s performance on both short-term and transfer tests, but HMD data revealed that users rotated their heads less with a 110° OFOV. We also found that proximity of objects to memorize had an interaction effect with smaller OFOV sizes. Our findings could have implications on the design and HMD choices of augmented training.",
+		"container-title": "Computer and Graphics",
+		"DOI": "doi.org/10.1016/j.cag.2021.09.004",
+		"page": "554-565",
+		"publisher": "Pergamon",
+		"title": "Does Overlay Field of View in Head-Mounted Displays Affect Spatial Memorization?",
+		"URL": "https://www.sciencedirect.com/science/article/pii/S0097849321001904",
+		"volume": "102",
+		"author": [
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Plopski",
+				"given": "Alexander"
+			},
+			{
+				"family": "Sandor",
+				"given": "Christian"
+			},
+			{
+				"family": "Fujimoto",
+				"given": "Yuichiro"
+			},
+			{
+				"family": "Kanbara",
+				"given": "Masayuki"
+			},
+			{
+				"family": "Kato",
+				"given": "Hirokazu"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					2,
+					25
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/3LIJIESR",
+		"type": "paper-conference",
+		"container-title": "Proceedings of the 14th Asia Pacific Workshop on Mixed and Augmented Reality",
+		"event-place": "Online",
+		"event-title": "Asia-Pacific Workshop on Mixed and Augmented Reality",
+		"title": "Influencing Driving Speed Using Perception-Based Augmented Reality",
+		"author": [
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Fujimoto",
+				"given": "Yuichiro"
+			},
+			{
+				"family": "Kanbara",
+				"given": "Masayuki"
+			},
+			{
+				"family": "Kato",
+				"given": "Hirokazu"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					12
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/7F2TL8DY",
+		"type": "article-journal",
+		"container-title": "Virtual Reality",
+		"DOI": "doi.org/10.1007/s10055-022-00673-z",
+		"page": "51-70",
+		"publisher": "Springer",
+		"title": "Exploring the Future Building: Representational Effects on Projecting Oneself Into the Future Office Space",
+		"volume": "27",
+		"author": [
+			{
+				"family": "Weerasinghe",
+				"given": "Maheshya"
+			},
+			{
+				"family": "Pucihar",
+				"given": "Klen Čopič"
+			},
+			{
+				"family": "Ducasse",
+				"given": "Julie"
+			},
+			{
+				"family": "Quigley",
+				"given": "Aaron"
+			},
+			{
+				"family": "Toniolo",
+				"given": "Alice"
+			},
+			{
+				"family": "Miguel",
+				"given": "Angela"
+			},
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Kljun",
+				"given": "Matjaž"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2023"
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/MJ884Q9H",
+		"type": "paper-conference",
+		"collection-title": "EI '23",
+		"container-title": "Electronic Imaging",
+		"event-place": "Burlingame, California",
+		"event-title": "Electronic Imaging",
+		"title": "Comparison of AR and VR Memory Palace Quality in Second-Language Vocabulary Acquisition",
+		"author": [
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Tian",
+				"given": "Xiaoyang"
+			},
+			{
+				"family": "Chandler",
+				"given": "Damon M."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2023"
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/PX6GZB2X",
+		"type": "paper-conference",
+		"collection-title": "SIET '23",
+		"container-title": "Proceedings of of the 8th International Conference on Sustainable Information Engineering and Technology",
+		"event-place": "Bali, Indonesia",
+		"event-title": "International Conference on Sustainable Information Engineering and Technology",
+		"title": "A CNN-Based Arabic Diacritic Symbol Recognition System Using Domain Adaptation",
+		"URL": "https://dl.acm.org/doi/abs/10.1145/3626641.3627212",
+		"author": [
+			{
+				"family": "Alalawi",
+				"given": "Youssef"
+			},
+			{
+				"family": "Chandler",
+				"given": "Damon M."
+			},
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2023"
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/9G6ILETE",
+		"type": "paper-conference",
+		"collection-title": "ICFULL '24",
+		"container-title": "Proceedings of of the 3rd APSCE International Conference on Future Language Learning",
+		"title": "Can Language Learning Happen in Technology-Mediated Translation Aids?",
+		"author": [
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Cheung",
+				"given": "Carson"
+			},
+			{
+				"family": "Chandler",
+				"given": "Damon M."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2024"
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/98JSGG4A",
+		"type": "paper-conference",
+		"container-title": "Proceedings of the 34th International Conference on Computers in Education",
+		"event-place": "Manila, Philippines",
+		"event-title": "International Conference on Computers in Education",
+		"title": "Improving Engagement in Museums Through Virtual Reality Educational Escape Rooms (VREER): A Framework and Usability Study",
+		"URL": "https://library.apsce.net/index.php/ICCE/article/view/5017/4945",
+		"author": [
+			{
+				"family": "Vidal",
+				"given": "Eric Cesar Jr. E."
+			},
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Lee",
+				"given": "Joan Dominique L."
+			},
+			{
+				"family": "Ko",
+				"given": "Kenneth King L."
+			},
+			{
+				"family": "Jocson",
+				"given": "Jed Laszlo O."
+			},
+			{
+				"family": "Go",
+				"given": "Gerick Jeremiah Niño N."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2024",
+					11
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/839UT3MM",
+		"type": "paper-conference",
+		"container-title": "Proceedings of the 34th International Conference on Computers in Education",
+		"event-place": "Manila, Philippines",
+		"event-title": "International Conference on Computers in Education",
+		"title": "The Effect of Stimulus Concurrence on Memorizing Constellations in VR",
+		"URL": "https://library.apsce.net/index.php/ICCE/article/view/5031/4963",
+		"author": [
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Yahara",
+				"given": "Eiji"
+			},
+			{
+				"family": "Chandler",
+				"given": "Damon M."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2024",
+					11
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/EB2C7AJD",
+		"type": "paper-conference",
+		"collection-title": "EI '25",
+		"container-title": "Proceedings of Electronic Imaging",
+		"event-place": "Burlingame, California",
+		"event-title": "Electronic Imaging",
+		"title": "On the Effects of Video Game Texture Resolution on Navigation Performance",
+		"author": [
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Borlado",
+				"given": "Carlos Rhenell"
+			},
+			{
+				"family": "Chandler",
+				"given": "Damon M."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2025"
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/XH3WJXSI",
+		"type": "paper-conference",
+		"collection-title": "EI '26",
+		"container-title": "Proceedings of Electronic Imaging",
+		"event-place": "Burlingame, California",
+		"event-title": "Electronic Imaging",
+		"title": "A Comparative Study on Memory Strategy Adaptation in XR Vocabulary Learning",
+		"author": [
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Yang",
+				"given": "Minxu"
+			},
+			{
+				"family": "Chandler",
+				"given": "Damon M."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2026"
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/9IGHM7KI",
+		"type": "paper-conference",
+		"abstract": "In everyday life, physical effort is often minimized and convenience is prioritized, making it difficult for many people to sustain light exercise and stretching despite well-known long-term benefits. This challenge often arises not from objective movement limitations, but from whether an action feels \\emph{doable} in the moment and, therefore worth continuing. This position paper argues that subtle VR hand redirection (HR) can be reframed as a form of cross-sensory support for sustained practice by targeting \\emph{perceived doability}: a moment-to-moment cognitive appraisal that an action is within one’s capability while requiring manageable effort. We propose that conservative HR, applied within known perceptual limits, can create repeated micro-success experiences (e.g., reaching a virtual goal earlier with similar physical movement). These micro-successes may increase continuation intention and early re-engagement without relying on overt pressure or intensive coaching. At the same time, such support raises questions about autonomy and authenticity. We therefore articulate two research questions: (RQ1) how HR shifts perceived doability to support sustained practice and positive behavior change; and (RQ2) when HR functions as acceptable support versus becoming counterproductive by undermining authenticity, agency, trust, or fostering dependence. We present an initial sit-and-reach VR prototype, outline a research plan, and identify key design tensions to spark community discussions on autonomy-preserving cross-sensory futures in HCI.",
+		"container-title": "Extended Abstracts of the 2026 CHI Conference on Human Factors in Computing Systems",
+		"event-place": "Barcelona, Spain",
+		"event-title": "Conference on Human Factors in Computing Systems",
+		"publisher": "Association for Computing Machinery",
+		"title": "Rewiring Perceived Doability in VR: Hand Redirection as a Subtle Cross-Sensory Support for Sustained Practice",
+		"author": [
+			{
+				"family": "Butaslac III",
+				"given": "Isidro"
+			},
+			{
+				"family": "Nagaya",
+				"given": "Yota"
+			},
+			{
+				"family": "Redoble",
+				"given": "Almira Princess"
+			},
+			{
+				"family": "Deja",
+				"given": "Jordan Aiko"
+			},
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Weerasinghe",
+				"given": "Maheshya"
+			},
+			{
+				"family": "Sawabe",
+				"given": "Taishi"
+			},
+			{
+				"family": "Kato",
+				"given": "Hirokazu"
+			},
+			{
+				"family": "Vidal",
+				"given": "Eric Cesar Jr. E."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2026",
+					4,
+					13
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/B3IFVAXN",
+		"type": "paper-conference",
+		"abstract": "Robots are moving beyond industrial settings into creative, educational, and public environments where interaction is open-ended and improvisational. Yet much of human–AI–robot interaction remains framed around performance and efficiency, positioning humans as supervisors rather than collaborators. We propose a re-framing of AI interaction with robots as scaffolding: infrastructure that enables humans to shape robotic behaviour over time while remaining meaningfully in control. Through scenarios from creative practice, learning-by-teaching, and embodied interaction, we illustrate how humans can act as executive directors, defining intent and steering revisions, while AI mediates between human expression and robotic execution. We outline design and evaluation implications that foreground creativity, agency, and flow. Finally, we discuss open challenges in social, scalable, and mission-critical contexts. We invite the community to rethink interacting with Robots and AI not as autonomy, but as sustained support for human creativity.",
+		"container-title": "Extended Abstracts of the 2026 CHI Conference on Human Factors in Computing Systems",
+		"event-place": "Barcelona, Spain",
+		"event-title": "Conference on Human Factors in Computing Systems",
+		"publisher": "Association for Computing Machinery",
+		"title": "Directing the Robot: Scaffolding Creative Human–AI–Robot Interaction",
+		"author": [
+			{
+				"family": "Deja",
+				"given": "Jordan Aiko"
+			},
+			{
+				"family": "Butaslac III",
+				"given": "Isidro"
+			},
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Weerasinghe",
+				"given": "Maheshya"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2026",
+					4,
+					13
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/Z8QINT5S",
+		"type": "paper-conference",
+		"abstract": "Learning to play the piano can be a difficult and lengthy process, and many beginners lose motivation. While digital tools exist, they may not fully capture the experience of playing. This paper introduces ChordFusion, a piano training system using Mixed Reality (MR) and custom-built interactive gloves. ChordFusion aims to make learning more effective and engaging by using visualization, active learning, and game-like features in an immersive MR setting. The system includes different modes (Freestyle, Auto, Practice) to suit various learning styles. We describe the design of ChordFusion, how the custom gloves work, and our plans for future improvements, including testing with users to see how well it helps them learn, improving its responsiveness, and making the finger tracking more advanced for a realistic playing experience.",
+		"container-title": "Entertainment Computing – ICEC 2025",
+		"ISBN": "978-3-032-02555-5",
+		"page": "478-486",
+		"publisher": "Springer Nature Switzerland",
+		"publisher-place": "Cham",
+		"title": "ChordFusion: Interactive Piano Training in Mixed Reality with Custom Gloves",
+		"author": [
+			{
+				"family": "M Haikal",
+				"given": "Muhammad Faiq Haikal Bin"
+			},
+			{
+				"family": "Ghosh",
+				"given": "Deb Kumar"
+			},
+			{
+				"family": "Lay",
+				"given": "Jordan K."
+			},
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Chandler",
+				"given": "Damon M."
+			}
+		],
+		"editor": [
+			{
+				"family": "Sugimoto",
+				"given": "Maki"
+			},
+			{
+				"family": "Di Iorio",
+				"given": "Angelo"
+			},
+			{
+				"family": "Figueroa",
+				"given": "Pablo"
+			},
+			{
+				"family": "Yamanishi",
+				"given": "Ryosuke"
+			},
+			{
+				"family": "Matsumura",
+				"given": "Kohei"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2025"
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/DHK4J9F9",
+		"type": "paper-conference",
+		"abstract": "Visualizations such as motion, and free-body diagrams accompany problems and scenarios in classical mechanics for a physics class. However, textbooks present such diagrams with fixed viewpoints and sparse information. In this paper, we describe the design of our virtual reality (VR) experience that transforms these diagrams into interactive, customizable, and dynamic components that learners can inspect and engage in a 3D immersive environment. We highlight their use in three scenarios: freefall, horizontal, and parabolic motions. As sandbox-type experiences, we allow users to inspect these environments freely as the motion diagrams are visualized. Then, to mimic a real-world experiment of observable phenomena, we designated buttons for dependent variable changes like height, initial angle, and velocity. As an ending assessment, we showed an equation fill-in-the-blanks canvas interface to check the learners' understanding of the relationships among the variables. We also include insights from the development process and future work towards a user study.",
+		"container-title": "Entertainment Computing – ICEC 2025",
+		"ISBN": "978-3-032-02555-5",
+		"page": "433–441",
+		"publisher": "Springer Nature Switzerland",
+		"publisher-place": "Cham",
+		"title": "Physics Virtual Classroom: Leveraging Virtual Reality Sandboxes for Learning Classical Mechanics",
+		"author": [
+			{
+				"family": "Elangovan",
+				"given": "Guhan"
+			},
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Chandler",
+				"given": "Damon M."
+			}
+		],
+		"editor": [
+			{
+				"family": "Sugimoto",
+				"given": "Maki"
+			},
+			{
+				"family": "Di Iorio",
+				"given": "Angelo"
+			},
+			{
+				"family": "Figueroa",
+				"given": "Pablo"
+			},
+			{
+				"family": "Yamanishi",
+				"given": "Ryosuke"
+			},
+			{
+				"family": "Matsumura",
+				"given": "Kohei"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2025"
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/19839982/items/ED5F5C2H",
+		"type": "paper-conference",
+		"abstract": "In a dense 3D environment, evaluations of user interface design for occluded internal structures focused primarily on a time-based measure of efficiency of selection and manipulation. However, there is a tradeoff when designing automated hints in these environments in the case of strategy-based games, as these hints compromise the mentally demanding nature of a 3D game and the player's ability to envision a mental map of the environment. In the case of a desktop-based 3D Connect Four, hinting that an opponent will win the next round can be presented to the player in two ways: previewing the danger position with a differently colored sphere or revealing the existing spheres that only needs one more opponent sphere to win. We conducted a within-subjects study of 12 participants to test these two hints versus a control condition. The results reveal a trade-off between the helpful and distracting nature of hints and how such hints might affect challenge and cognitive load. The insights from this user study point to better 3D game hint designs and balancing the gameplay when hints are present or absent.",
+		"container-title": "Entertainment Computing – ICEC 2025",
+		"ISBN": "978-3-032-02555-5",
+		"page": "442–450",
+		"publisher": "Springer Nature Switzerland",
+		"publisher-place": "Cham",
+		"title": "Gestalt Approaches to Hinting in Games: A 3D Connect Four Case Study",
+		"author": [
+			{
+				"family": "Hirahata",
+				"given": "Yuta"
+			},
+			{
+				"family": "Caluya",
+				"given": "Nicko R."
+			},
+			{
+				"family": "Chandler",
+				"given": "Damon M."
+			}
+		],
+		"editor": [
+			{
+				"family": "Sugimoto",
+				"given": "Maki"
+			},
+			{
+				"family": "Di Iorio",
+				"given": "Angelo"
+			},
+			{
+				"family": "Figueroa",
+				"given": "Pablo"
+			},
+			{
+				"family": "Yamanishi",
+				"given": "Ryosuke"
+			},
+			{
+				"family": "Matsumura",
+				"given": "Kohei"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2025"
+				]
+			]
+		}
+	}
+]
