@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Marquee Landing Page</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: white;
+    overflow-x: hidden;
+  }
+
+  /* --- Marquee Background --- */
+  #container {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .marquee-grid {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: grid;
+    row-gap: 3px;
+  }
+
+  .marquee-row {
+    height: 256px;
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 3px;
+    width: max-content;
+    animation: scroll linear infinite;
+  }
+
+  .square {
+    width: 256px;
+    height: 256px;
+    flex: 0 0 256px;
+    overflow: hidden;
+  }
+
+  .square img {
+    width: 256px;
+    height: 256px;
+    object-fit: cover;
+  }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-259px); }
+  }
+
+  /* --- Page Content --- */
+  .page {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Global layout grid */
+  .section {
+    padding: 80px 40px;
+    max-width: 900px;
+  }
+
+  /* Sticky header */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 20px 40px;
+
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(6px);
+  }
+
+  .header h1 {
+    margin: 0;
+    font-size: 20px;
+  }
+
+  /* Hero */
+  .hero h2 {
+    font-size: clamp(36px, 6vw, 64px);
+    margin: 0 0 16px;
+    line-height: 1.1;
+  }
+
+  .hero p {
+    font-size: 18px;
+    color: #444;
+    max-width: 600px;
+  }
+
+  /* Section titles */
+  .section h3 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  /* Cards (for work/projects) */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    padding: 16px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Footer */
+  .footer {
+    padding: 60px 40px;
+    font-size: 14px;
+    color: #555;
+  }
+
+  /* Readability fade */
+  .page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.95),
+      rgba(255,255,255,0.7) 30%,
+      rgba(255,255,255,0.7) 70%,
+      rgba(255,255,255,0.95)
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- Background -->
+<div id="container"></div>
+
+<!-- Foreground Content -->
+<div class="page">
+
+  <div class="header">
+    <h1>Your Name</h1>
+  </div>
+
+  <section class="section hero">
+    <h2>Exploring visual systems, interaction, and motion.</h2>
+    <p>
+      A short intro about your work, research, or creative focus. Keep it tight and readable.
+    </p>
+  </section>
+
+  <section class="section">
+    <h3>About</h3>
+    <p>
+      Brief description of what you do. This can be research, design, development, or anything else.
+    </p>
+  </section>
+
+  <section class="section">
+    <h3>Selected Work</h3>
+    <div class="grid">
+      <div class="card">Project One</div>
+      <div class="card">Project Two</div>
+      <div class="card">Project Three</div>
+      <div class="card">Project Four</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>Contact</h3>
+    <p>Email · Links · Socials</p>
+  </section>
+
+  <div class="footer">
+    © 2026 Your Name
+  </div>
+
+</div>
+
+<script>
+const images = [
+  "img/artx.png",
+  "img/kantenbouki.png",
+  "img/research_sq.png",
+  "img/writing.jpg",
+  "img/gscholar.png"
+];
+
+const TILE = 259;
+const ROW_HEIGHT = 259;
+const container = document.getElementById("container");
+
+function createRow(duration, reverse=false) {
+  const row = document.createElement("div");
+  row.className = "marquee-row";
+
+  const track = document.createElement("div");
+  track.className = "marquee-track";
+  track.style.animationDuration = duration + "s";
+  if (reverse) track.style.animationDirection = "reverse";
+
+  const tiles = Math.ceil(window.innerWidth / TILE) + 2;
+
+  for (let i = 0; i < tiles * 2; i++) {
+    const sq = document.createElement("div");
+    sq.className = "square";
+
+    const img = document.createElement("img");
+    img.src = images[i % images.length];
+
+    sq.appendChild(img);
+    track.appendChild(sq);
+  }
+
+  row.appendChild(track);
+  return row;
+}
+
+function populate() {
+  container.innerHTML = "";
+
+  const rows = Math.floor(window.innerHeight / ROW_HEIGHT);
+  const used = rows * ROW_HEIGHT;
+  const offset = Math.floor((window.innerHeight - used) / 2);
+
+  const grid = document.createElement("div");
+  grid.className = "marquee-grid";
+  grid.style.top = offset + "px";
+  grid.style.gridTemplateRows = `repeat(${rows}, 256px)`;
+
+  for (let i = 0; i < rows; i++) {
+    grid.appendChild(createRow(5 + i * 0.8, i % 2 === 0));
+  }
+
+  container.appendChild(grid);
+}
+
+populate();
+window.addEventListener("resize", populate);
+</script>
+
+</body>
+</html>

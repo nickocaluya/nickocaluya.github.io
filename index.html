@@ -1,183 +1,344 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Nicko Reginio Caluya - Official Webpage</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="./style.css">
-<link rel="icon" 
-      type="image/png" 
-      href="img/redcirc250.png">
+<meta charset="UTF-8">
+<title>Nicko Reginio Caluya</title>
 
+<style>
+.overlay {
+  position: relative;
+  z-index: -2;
+
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* Layout rhythm */
+  padding: 40px 40px 56px; /* top | sides | bottom */
+}
+
+.overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.5),
+    rgba(255,255,255,0) 40%,
+    rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.5e)
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/*  header, footer {
+    max-width: 800px;
+    pointer-events: auto;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  header p {
+    margin: 8px 0 0;
+    color: #444;
+  }
+
+  footer {
+    font-size: 14px;
+    color: #555;
+  }*/
+/* Shared text block width */
+header, footer {
+  max-width: 720px;
+}
+
+/* Header */
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+header p {
+  margin: 0;
+  font-size: 18px;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* Footer */
+footer {
+  font-size: 14px;
+  color: #555;
+
+  margin-bottom: 24px;
+
+  /* subtle lift + readability */
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(4px);
+
+  align-self: flex-start;
+}
+
+/*
+.overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0));
+  z-index: -1;
+  }
+
+  header h1 {
+  font-size: clamp(24px, 4vw, 40px);
+  }
+
+  header {
+  backdrop-filter: blur(6px);
+  }
+
+  footer {
+    font-size: 14px;
+    color: #111;
+
+    background: rgba(255, 255, 255, 0.85);
+    padding: 8px 12px;
+    border-radius: 6px;
+
+     margin-bottom: 24px;
+
+    backdrop-filter: blur(4px);
+  }*/
+
+  body {
+    margin: 0;
+    background: white;
+    overflow: hidden;
+    font-family: system-ui, sans-serif;
+  }
+
+  /* --- Marquee Background --- */
+  #container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .marquee-grid {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: grid;
+    row-gap: 3px;
+  }
+
+  .marquee-row {
+    width: 100%;
+    height: 256px;
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 3px;
+    width: max-content;
+    animation: scroll linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .square {
+  position: relative;
+  width: 256px;
+  height: 256px;
+    overflow: hidden;
+  }
+
+  .square a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .square img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* TEXT OVERLAY */
+  .label {
+     position: absolute;
+
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      bottom: auto;   
+      right: auto;    
+      
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+
+      z-index: 2;
+  }
+
+  /*.label {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+
+    z-index: 1;
+  }*/
+
+  /* subtle readability boost */
+  .square::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.5),
+      rgba(0,0,0,0)
+    );
+  }
+
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-259px); }
+    }
+
+  /* --- Overlay Layout --- */
+  .overlay {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 32px;
+    pointer-events: none; /* allows hover to still hit marquee */
+  }
+</style>
 </head>
-
 <body>
 
-<header>
+<div id="container"></div>
 
-  <div class="container">
+<div class="overlay">
+  <header>
+    <h1>Nicko Reginio Caluya</h1>
+    <p>Assistant Professor / Researcher / Writer #ArtXScience</p>
+  </header>
 
-    <div class="profile">
+  <footer>
+    © 2026 Nicko Caluya · Links · Info
+  </footer>
+</div>
 
-      <div class="profile-image">
+<script>
+const items = [
+  { img: "img/artx.png", link: "../cloud-field.html", label: "Cloud Field" },
+  { img: "img/kantenbouki.png", link: "../pubs.html", label: "Publications" },
+  { img: "img/research_sq.png", link: "../research.html", label: "Research" },
+  { img: "img/nothing.jpg", link: "http://curareartspace.com/no-vision-2020", label: "#NoVision2020" },
+  { img: "img/writing.jpg", link: "../poetry.html", label: "Poetry" },
+  { img: "img/gscholar.png", link: "../fullcv_20250206.pdf", label: "Full CV" }
+];
 
-        <img src="img/nicko_200.png" alt="">
+const TILE = 259;
+const ROW_HEIGHT = 259;
+const container = document.getElementById("container");
 
-        <!--a href="https://fireflights.github.io/dist"> <img src="img/redcirc250.png" alt=""></a-->
+function createRow(duration, reverse = false) {
+  const row = document.createElement("div");
+  row.className = "marquee-row";
 
-        <!--img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt=""-->
+  const track = document.createElement("div");
+  track.className = "marquee-track";
+  track.style.animationDuration = duration + "s";
+  if (reverse) track.style.animationDirection = "reverse";
 
-      </div>
+  const tiles = Math.ceil(window.innerWidth / TILE) + 2;
 
-      <div class="profile-user-settings">
+  for (let i = 0; i < tiles * 2; i++) {
+    const item = items[i % items.length];
 
-        <h1 class="profile-user-name">🟦</h1>
+    const sq = document.createElement("div");
+    sq.className = "square";
 
-        <!--button class="btn profile-edit-btn">Edit Profile</button-->
+    const a = document.createElement("a");
+    a.href = item.link;
+    a.target = "_blank";
 
-        <!--button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button-->
+    const img = document.createElement("img");
+    img.src = item.img;
 
-      </div>
+    const label = document.createElement("span");
+    label.className = "label";
+    label.textContent = item.label;
 
-      <div class="profile-bio">
+    a.appendChild(img);
+    a.appendChild(label);
+    sq.appendChild(a);
+    track.appendChild(sq);
+  }
 
-        <p><a href="https://nickocaluya.github.io/"><span class="profile-real-name">Nicko Reginio Caluya</span></a> is an Assistant Professor at <a href="http://en.ritsumei.ac.jp/ise/">College of Information Science and Engineering</a>, <a href="http://en.ritsumei.ac.jp/">Ritsumeikan University</a>.</p>
+  row.appendChild(track);
+  return row;
+}
 
-      </div>
+function populate() {
+  container.innerHTML = "";
 
-      <div class="profile-bio">
+  const rows = Math.floor(window.innerHeight / ROW_HEIGHT);
+  const used = rows * ROW_HEIGHT;
+  const offset = Math.floor((window.innerHeight - used) / 2);
 
-      <p>
-        <a href="https://nickocaluya.github.io/fullcv_20250206.pdf" target="_blank" span title="Curriculum Vitae" class="footer-icons">CV</span>
-          <a href="https://scholar.google.com/citations?user=MZdAPeAAAAAJ&hl=en" target="_blank" span class="footer-icons" title="Google Scholar"><i class="fab fa-google"></i></span>
-         <a href="https://twitter.com/nickocaluya" span class="footer-icons" title="Twitter"><i class="fab fa-twitter"></i></span>
-         <a href="https://www.linkedin.com/in/nicko-caluya-18208646/" span class="footer-icons" title="LinkedIn"><i class="fab fa-linkedin"></i></span>
-         <a href="https://instagram.com/nickocaluya" span class="footer-icons" title="Instagram"><i class="fab fa-instagram"></i></span>
-         <a href="ramenmap.html" target="_blank" span class="footer-icons" title="Ramen Map"><i class="fa fa-map-pin"></i></span>
-        </p>
-        <!-- <i class="fab fa-location-dot"> -->
-      </a></a></a></a></a></a>
-    
-      </div>
+  const grid = document.createElement("div");
+  grid.className = "marquee-grid";
+  grid.style.top = offset + "px";
+  grid.style.gridTemplateRows = `repeat(${rows}, 256px)`;
 
-    </div>
-    <!-- End of profile section -->
+  for (let i = 0; i < rows; i++) {
+    grid.appendChild(createRow(5 + i * 0.8, i % 2 === 0));
+  }
 
-  </div>
-  <!-- End of container -->
-</header>
+  container.appendChild(grid);
+}
 
-<main>
-      
-<section class="post-list">
+populate();
+window.addEventListener("resize", populate);
+</script>
 
-  <!-- End of container -->
-  <a href="poetry.html" target="_blank" class="post">
-      <figure class="post-image">
-        <img src="img/gscholar.png" alt="">
-      </figure>
-      <div class="post-overlay">
-        <p>
-          <span class="post-likes"><i class="fas fa-feather-alt" aria-hidden="false"></i><br/>Art</span>
-        </p>
-      </div>
-   </a>
-   <a href="collabs.html" class="post">
-      <figure class="post-image">
-        <img src="img/art.png" alt="">
-      </figure>
-      <div class="post-overlay">
-        <p>
-          <span class="post-likes"><i class="fas fa-palette" aria-hidden="false"></i><br/>X</span>
-        </p>
-      </div>
-    </a>
-    <a href="research.html" class="post">
-      <figure class="post-image">
-        <img src="img/research_sq.png" alt="">
-      </figure>
-      <div class="post-overlay">
-        <p>
-          <span class="post-likes"><i class="fas fa-vr-cardboard" aria-hidden="false"></i><br/>Science</span>
-        </p>
-      </div>
-    </a>
-    
-    
-    <!-- <a href="https://www.instagram.com/stories/highlights/17968871626305410/" target="_blank" class="post">
-      <figure class="post-image">
-        <img src="img/science.jpg" alt="">
-      </figure>
-      <div class="post-overlay">
-        <p>
-          <span class="post-likes"><i class="fas fa-user-astronaut" aria-hidden="false"></i><br/>Pinoy Scientists</span>
-        </p>
-      </div>
-    </a>
-     <a href="https://scholar.google.com/citations?user=MZdAPeAAAAAJ&hl=en" target="_blank" class="post">
-      <figure class="post-image">
-        <img src="img/shikafuji.jpg" alt="">
-      </figure>
-      <div class="post-overlay">
-        <p>
-          <span class="post-likes"><i class="fas fa-graduation-cap" aria-hidden="false"></i><br/>Google Scholar</span>
-        </p>
-      </div>
-   </a>
-    <a href="https://fireflights.wordpress.com" target="_blank" class="post">
-      <figure class="post-image">
-        <img src="img/nasaloobangkulo.jpg" alt="">
-      </figure>
-      <div class="post-overlay">
-        <p>
-         <span class="post-likes"><i class="fas fa-fire" aria-hidden="false"></i><br/>Fireflights: Writing and Light</span>
-       </p>
-      </div>
-    </a>
-    <a href="https://nickocaluya.github.io/fullcv_20220319.pdf" target="_blank" class="post">
-      <figure class="post-image">
-        <img src="img/ramen.jpg" alt="">
-      </figure>
-      <div class="post-overlay">
-        <p>
-          <span class="post-likes"><i class="fas fa-feather-alt" aria-hidden="false"></i><br/>CV</span>
-        </p>
-      </div>
-    </a>
-    <a href="https://www.curareartspace.com/no-vision-2020" target="_blank" class="post">
-      <figure class="post-image">
-        <img src="img/novision2020.jpg" alt="">
-      </figure>
-      <div class="post-overlay">
-        <p>
-          <span class="post-likes"><i class="fas fa-eye-slash" aria-hidden="false"></i><br/>No Vision 2020</span>
-        </p>
-      </div>
-    </a>
-    </a>
-    <a href="ramenmap.html" target="_blank" class="post">
-      <figure class="post-image">
-        <img src="img/ramencup.jpg" alt="">
-      </figure>
-      <div class="post-overlay">
-        <p>
-          <span class="post-likes"><i class="fas fa-map-marked-alt" aria-hidden="false"></i><br/>Ramen Map</span>
-        </p>
-      </div>
-    </a> -->
-  </section>
-
-
-</main>
-
-<div id="footer">
-    <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fnickocaluya.github.io&count_bg=%23000000&title_bg=%230016FF&icon=github.svg&icon_color=%23FFFFFF&title=visits&edge_flat=true"/ span class = "footer-counter"></span>
-      <br/>
-        <br/>
-   <p>Copyright (c) 2025 NICKO REGINIO CALUYA All rights reserved.</p>
-
-</div> 
-
-  <script  src="./script.js"></script>
 </body>
 </html>

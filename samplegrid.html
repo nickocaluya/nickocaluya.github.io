@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Infinite Image Marquee</title>
+<style>
+  body {
+    margin: 0;
+    background: white;
+    overflow: hidden;
+  }
+
+  .marquee-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 3px;
+  }
+
+  .marquee-row {
+    width: 100%;
+    overflow: hidden; /* hides overflow edges */
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 3px;
+    width: max-content;
+    animation: scroll 12s linear infinite;
+
+    align-items: stretch;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .square {
+    width: 256px;
+    aspect-ratio: 1 / 1;   
+    flex: 0 0 256px; /* prevents stretching */
+
+      display: flex;              /* 👈 NEW */
+      align-items: center;        /* 👈 NEW */
+      justify-content: center;    /* 👈 NEW */
+  }
+
+  .square img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      /*transform: translateX(-50%);*/
+      transform: translateX(-518px); /* 256 + 3 gap * 2 squares */
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="marquee-container" id="container"></div>
+
+<script>
+  const images = [
+  "img/artx.png",
+  "img/nothing.jpg",
+  "img/kantenbouki.png",
+  "img/nothing.jpg",
+  "img/nothing.jpg",
+  "img/research_sq.png",
+  "img/nothing.jpg",
+  "img/writing.jpg",
+  "img/nothing.jpg",
+  "img/gscholar.png",
+  "img/nothing.jpg"
+];
+  const container = document.getElementById("container");
+
+  function createRow(speed, reverse=false) {
+    const row = document.createElement("div");
+    row.className = "marquee-row";
+
+    const track = document.createElement("div");
+    track.className = "marquee-track";
+    track.style.animationDuration = speed + "s";
+    if (reverse) track.style.animationDirection = "reverse";
+
+    const total = 20;
+    const squares = [];
+
+    // Create ONE full set
+    for (let i = 0; i < total; i++) {
+      const sq = document.createElement("div");
+      sq.className = "square";
+
+      const img = document.createElement("img");
+      img.src = images[i % images.length];
+
+      sq.appendChild(img);
+      squares.push(sq);
+    }
+
+    // Duplicate the set twice (critical!)
+    squares.forEach(sq => track.appendChild(sq.cloneNode(true)));
+    squares.forEach(sq => track.appendChild(sq.cloneNode(true)));
+
+    row.appendChild(track);
+    return row;
+  }
+
+  function populate() {
+    container.innerHTML = "";
+
+    const rowHeight = 256 + 3;
+    const rowsNeeded = Math.ceil(window.innerHeight / rowHeight)+2;
+
+    for (let i = 0; i < rowsNeeded; i++) {
+      const speed = 25 + Math.sin(i * 0.6) * 3;// vary speeds
+      const reverse = i % 2 === 0;
+      container.appendChild(createRow(speed, reverse));
+    }
+  }
+
+  populate();
+  window.addEventListener("resize", populate);
+</script>
+
+</body>
+</html>
