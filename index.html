@@ -1,344 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Nicko Reginio Caluya</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600&display=swap" rel="stylesheet">
+<script>
+  // Apply a saved theme choice before first paint (no flash)
+  try {
+    var t = localStorage.getItem('theme');
+    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
 <style>
-.overlay {
-  position: relative;
-  z-index: -2;
-
-  height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  /* Layout rhythm */
-  padding: 40px 40px 56px; /* top | sides | bottom */
-}
-
-.overlay::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.5),
-    rgba(255,255,255,0) 40%,
-    rgba(255,255,255,0) 60%,
-    rgba(255,255,255,0.5e)
-  );
-  pointer-events: none;
-  z-index: -1;
-}
-
-/*  header, footer {
-    max-width: 800px;
-    pointer-events: auto;
+  :root {
+    --blue: #003399;                    /* deep royal blue */
+    --bg: #ffffff;
+    --bg-clear: rgba(255, 255, 255, 0); /* same colour, fully transparent (for fades) */
+    --fg: var(--blue);
+    --menu-width: 50vw;     /* desktop: half the page */
+    --menu-offset: 20vw;    /* desktop: menu starts 30% of the way across */
+    --font-size: 8vw;
+    --speed: 24s;           /* time for one full loop; raise to slow down */
+    --fade: 16vh;           /* height of the glass fade above/below the strip */
   }
-
-  header h1 {
-    margin: 0;
-    font-size: 28px;
-    font-weight: 600;
-  }
-
-  header p {
-    margin: 8px 0 0;
-    color: #444;
-  }
-
-  footer {
-    font-size: 14px;
-    color: #555;
-  }*/
-/* Shared text block width */
-header, footer {
-  max-width: 720px;
-}
-
-/* Header */
-header {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 60px;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-header p {
-  margin: 0;
-  font-size: 18px;
-  color: #444;
-  line-height: 1.5;
-}
-
-/* Footer */
-footer {
-  font-size: 14px;
-  color: #555;
-
-  margin-bottom: 24px;
-
-  /* subtle lift + readability */
-  padding: 10px 14px;
-  border-radius: 6px;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(4px);
-
-  align-self: flex-start;
-}
-
-/*
-.overlay::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0));
-  z-index: -1;
-  }
-
-  header h1 {
-  font-size: clamp(24px, 4vw, 40px);
-  }
-
-  header {
-  backdrop-filter: blur(6px);
-  }
-
-  footer {
-    font-size: 14px;
-    color: #111;
-
-    background: rgba(255, 255, 255, 0.85);
-    padding: 8px 12px;
-    border-radius: 6px;
-
-     margin-bottom: 24px;
-
-    backdrop-filter: blur(4px);
-  }*/
-
-  body {
-    margin: 0;
-    background: white;
-    overflow: hidden;
-    font-family: system-ui, sans-serif;
-  }
-
-  /* --- Marquee Background --- */
-  #container {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    z-index: 0;
-  }
-
-  .marquee-grid {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    display: grid;
-    row-gap: 3px;
-  }
-
-  .marquee-row {
-    width: 100%;
-    height: 256px;
-    overflow: hidden;
-  }
-
-  .marquee-track {
-    display: flex;
-    gap: 3px;
-    width: max-content;
-    animation: scroll linear infinite;
-  }
-
-  .marquee-track:hover {
-    animation-play-state: paused;
-  }
-
-  .square {
-  position: relative;
-  width: 256px;
-  height: 256px;
-    overflow: hidden;
-  }
-
-  .square a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: relative;
-  }
-
-  .square img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* TEXT OVERLAY */
-  .label {
-     position: absolute;
-
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
-      bottom: auto;   
-      right: auto;    
-      
-      color: white;
-      font-size: 16px;
-      font-weight: 600;
-      text-align: center;
-
-      z-index: 2;
-  }
-
-  /*.label {
-    position: absolute;
-    left: 12px;
-    bottom: 12px;
-
-    color: white;
-    font-size: 14px;
-    font-weight: 500;
-
-    z-index: 1;
-  }*/
-
-  /* subtle readability boost */
-  .square::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to top,
-      rgba(0,0,0,0.5),
-      rgba(0,0,0,0)
-    );
-  }
-
-    @keyframes scroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-259px); }
+  /* Dark: follows the system unless the visitor has used the knob */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: var(--blue);
+      --bg-clear: rgba(0, 51, 153, 0);
+      --fg: #ffffff;
     }
+  }
+  :root[data-theme="dark"] {
+    --bg: var(--blue);
+    --bg-clear: rgba(0, 51, 153, 0);
+    --fg: #ffffff;
+  }
+  :root[data-theme="light"] {
+    --bg: #ffffff;
+    --bg-clear: rgba(255, 255, 255, 0);
+    --fg: var(--blue);
+  }
 
-  /* --- Overlay Layout --- */
-  .overlay {
-    position: relative;
-    z-index: 1;
-    height: 100vh;
+  /* Mobile: more room for the huge names */
+  @media (max-width: 700px) {
+    :root {
+      --menu-width: 80vw;
+      --menu-offset: 20vw;   /* mobile: shifted ~20% of page width */
+      --font-size: 19vw;
+      --speed: 16s;
+      --fade: 12vh;
+    }
+  }
 
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  nav {
+    position: fixed;
+    inset: 0 auto 0 var(--menu-offset);
+    width: var(--menu-width);
+    overflow: hidden;
+  }
+  .track {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    animation: drift var(--speed) linear infinite;
+    will-change: transform;
+  }
+  /* 4 identical copies; shifting by one copy (25%) loops seamlessly, moving DOWN */
+  @keyframes drift {
+    from { transform: translateY(-25%); }
+    to   { transform: translateY(0); }
+  }
+  nav.stopped .track { animation-play-state: paused; }
 
-    padding: 32px;
-    pointer-events: none; /* allows hover to still hit marquee */
+  ul { list-style: none; }
+  a {
+    display: block;
+    color: var(--fg);
+    text-decoration: none;
+    font-size: var(--font-size);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    padding: 0.04em 0;
+    width: fit-content;
+  }
+  a:focus-visible { outline: none; text-decoration: underline; text-decoration-thickness: 0.06em; text-underline-offset: 0.08em; }
+
+  /* Hover: a brief frosted blur-and-fade, like the strip's edge, then back to sharp */
+  @keyframes frost {
+    0%   { filter: blur(0);   opacity: 1; }
+    45%  { filter: blur(7px); opacity: 0.35; }
+    100% { filter: blur(0);   opacity: 1; }
+  }
+  @media (hover: hover) {
+    a:hover { animation: frost 0.7s ease; }
+  }
+  a:active { animation: frost 0.7s ease; }
+
+  /* Static strip at the vertical middle. Fully opaque; the menu goes "behind glass" at its edges. */
+  .strip {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: var(--bg);
+    padding: 1.1rem 3vw 1.2rem var(--menu-offset);  /* text follows the menu's left edge */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  /* Soft frosted fade above and below: text dissolves and blurs progressively as it nears the strip */
+  .strip::before,
+  .strip::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: var(--fade);
+    pointer-events: none;
+    -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+  }
+  .strip::before {
+    bottom: 100%;
+    background: linear-gradient(to top, var(--bg), var(--bg-clear));
+    -webkit-mask-image: linear-gradient(to top, #000, transparent);
+            mask-image: linear-gradient(to top, #000, transparent);
+  }
+  .strip::after {
+    top: 100%;
+    background: linear-gradient(to bottom, var(--bg), var(--bg-clear));
+    -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+            mask-image: linear-gradient(to bottom, #000, transparent);
+  }
+
+  .name {
+    font-size: clamp(1.6rem, 3.2vw, 3rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .tagline {
+    margin-top: 0.4rem;
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  /* Dark / light knob */
+  .knob {
+    flex: none;
+    position: relative;
+    width: 58px;
+    height: 32px;
+    padding: 0;
+    border: 2px solid var(--fg);
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+  }
+  .knob span {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--fg);
+    transition: transform 0.25s ease;
+  }
+  .knob[aria-checked="true"] span { transform: translateX(26px); }
+  .knob:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .track { animation: none; }
+    a:hover, a:active { animation: none; }
+    .knob span { transition: none; }
   }
 </style>
 </head>
 <body>
+  <nav id="menu" aria-label="Main">
+    <div class="track" id="track">
+      <ul>
+        <li><a href="/">about</a></li>
+        <li><a href="/pubs.html">research</a></li>
+        <li><a href="/poetry.html">poetry</a></li>
+        <li><a href="/fullcv_20261026.pdf">cv</a></li>
+        <li><a href="http://curareartspace.com/no-vision-2020">novision2020</a></li>
+        <li><a href="/cloud-field.html">cloudfield</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<div id="container"></div>
-
-<div class="overlay">
-  <header>
-    <h1>Nicko Reginio Caluya</h1>
-    <p>Assistant Professor / Researcher / Writer #ArtXScience</p>
+  <header class="strip">
+    <div class="strip-text">
+      <h1 class="name">Nicko Reginio Caluya</h1>
+      <p class="tagline">is a researcher, writer, & an assistant professor. © 2026 Nicko Caluya · Links · Info</p>
+    </div>
+    <button class="knob" id="theme" type="button" role="switch" aria-checked="false" aria-label="Dark mode" title="Toggle dark / light"><span></span></button>
   </header>
 
-  <footer>
-    © 2026 Nicko Caluya · Links · Info
-  </footer>
-</div>
-
 <script>
-const items = [
-  { img: "img/artx.png", link: "../cloud-field.html", label: "Cloud Field" },
-  { img: "img/kantenbouki.png", link: "../pubs.html", label: "Publications" },
-  { img: "img/research_sq.png", link: "../research.html", label: "Research" },
-  { img: "img/nothing.jpg", link: "http://curareartspace.com/no-vision-2020", label: "#NoVision2020" },
-  { img: "img/writing.jpg", link: "../poetry.html", label: "Poetry" },
-  { img: "img/gscholar.png", link: "../fullcv_20250206.pdf", label: "Full CV" }
-];
+  (function () {
+    var root = document.documentElement;
+    var nav = document.getElementById('menu');
+    var track = document.getElementById('track');
+    var original = track.querySelector('ul');
+    var knob = document.getElementById('theme');
 
-const TILE = 259;
-const ROW_HEIGHT = 259;
-const container = document.getElementById("container");
+    // Clone 3 extra copies for a seamless loop (hidden from assistive tech / tab order)
+    for (var i = 0; i < 3; i++) {
+      var copy = original.cloneNode(true);
+      copy.setAttribute('aria-hidden', 'true');
+      copy.querySelectorAll('a').forEach(function (a) { a.tabIndex = -1; });
+      track.appendChild(copy);
+    }
 
-function createRow(duration, reverse = false) {
-  const row = document.createElement("div");
-  row.className = "marquee-row";
+    // Tap/click anywhere toggles the animation.
+    // Pressing a link freezes the menu (easy to hit) and then navigates; the knob is left alone.
+    document.addEventListener('pointerdown', function (e) {
+      if (e.target.closest('button')) return;
+      if (e.target.closest('a')) nav.classList.add('stopped');
+      else nav.classList.toggle('stopped');
+    });
+    // Keyboard users: pause while tabbing through the links
+    original.addEventListener('focusin', function () { nav.classList.add('stopped'); });
 
-  const track = document.createElement("div");
-  track.className = "marquee-track";
-  track.style.animationDuration = duration + "s";
-  if (reverse) track.style.animationDirection = "reverse";
-
-  const tiles = Math.ceil(window.innerWidth / TILE) + 2;
-
-  for (let i = 0; i < tiles * 2; i++) {
-    const item = items[i % items.length];
-
-    const sq = document.createElement("div");
-    sq.className = "square";
-
-    const a = document.createElement("a");
-    a.href = item.link;
-    a.target = "_blank";
-
-    const img = document.createElement("img");
-    img.src = item.img;
-
-    const label = document.createElement("span");
-    label.className = "label";
-    label.textContent = item.label;
-
-    a.appendChild(img);
-    a.appendChild(label);
-    sq.appendChild(a);
-    track.appendChild(sq);
-  }
-
-  row.appendChild(track);
-  return row;
-}
-
-function populate() {
-  container.innerHTML = "";
-
-  const rows = Math.floor(window.innerHeight / ROW_HEIGHT);
-  const used = rows * ROW_HEIGHT;
-  const offset = Math.floor((window.innerHeight - used) / 2);
-
-  const grid = document.createElement("div");
-  grid.className = "marquee-grid";
-  grid.style.top = offset + "px";
-  grid.style.gridTemplateRows = `repeat(${rows}, 256px)`;
-
-  for (let i = 0; i < rows; i++) {
-    grid.appendChild(createRow(5 + i * 0.8, i % 2 === 0));
-  }
-
-  container.appendChild(grid);
-}
-
-populate();
-window.addEventListener("resize", populate);
+    // Dark / light knob
+    var media = window.matchMedia('(prefers-color-scheme: dark)');
+    function isDark() {
+      var t = root.getAttribute('data-theme');
+      return t ? t === 'dark' : media.matches;
+    }
+    function sync() { knob.setAttribute('aria-checked', String(isDark())); }
+    knob.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      sync();
+    });
+    if (media.addEventListener) media.addEventListener('change', sync);
+    sync();
+  })();
 </script>
-
 </body>
 </html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nicko Reginio Caluya</title>
+
+<style>
+.overlay {
+  position: relative;
+  z-index: -2;
+
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* Layout rhythm */
+  padding: 40px 40px 56px; /* top | sides | bottom */
+}
+
+.overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.5),
+    rgba(255,255,255,0) 40%,
+    rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.5e)
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/*  header, footer {
+    max-width: 800px;
+    pointer-events: auto;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  header p {
+    margin: 8px 0 0;
+    color: #444;
+  }
+
+  footer {
+    font-size: 14px;
+    color: #555;
+  }*/
+/* Shared text block width */
+header, footer {
+  max-width: 720px;
+}
+
+/* Header */
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+header p {
+  margin: 0;
+  font-size: 18px;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* Footer */
+footer {
+  font-size: 14px;
+  color: #555;
+
+  margin-bottom: 24px;
+
+  /* subtle lift + readability */
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(4px);
+
+  align-self: flex-start;
+}
+
+/*
+.overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0));
+  z-index: -1;
+  }
+
+  header h1 {
+  font-size: clamp(24px, 4vw, 40px);
+  }
+
+  header {
+  backdrop-filter: blur(6px);
+  }
+
+  footer {
+    font-size: 14px;
+    color: #111;
+
+    background: rgba(255, 255, 255, 0.85);
+    padding: 8px 12px;
+    border-radius: 6px;
+
+     margin-bottom: 24px;
+
+    backdrop-filter: blur(4px);
+  }*/
+
+  body {
+    margin: 0;
+    background: white;
+    overflow: hidden;
+    font-family: system-ui, sans-serif;
+  }
+
+  /* --- Marquee Background --- */
+  #container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .marquee-grid {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: grid;
+    row-gap: 3px;
+  }
+
+  .marquee-row {
+    width: 100%;
+    height: 256px;
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 3px;
+    width: max-content;
+    animation: scroll linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .square {
+  position: relative;
+  width: 256px;
+  height: 256px;
+    overflow: hidden;
+  }
+
+  .square a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .square img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* TEXT OVERLAY */
+  .label {
+     position: absolute;
+
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      bottom: auto;   
+      right: auto;    
+      
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+
+      z-index: 2;
+  }
+
+  /*.label {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+
+    z-index: 1;
+  }*/
+
+  /* subtle readability boost */
+  .square::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.5),
+      rgba(0,0,0,0)
+    );
+  }
+
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-259px); }
+    }
+
+  /* --- Overlay Layout --- */
+  .overlay {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 32px;
+    pointer-events: none; /* allows hover to still hit marquee */
+  }
+</style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<div class="overlay">
+  <header>
+    <h1>Nicko Reginio Caluya</h1>
+    <p>Assistant Professor / Researcher / Writer #ArtXScience</p>
+  </header>
+
+  <footer>
+    © 2026 Nicko Caluya · Links · Info
+  </footer>
+</div>
+
+<script>
+const items = [
+  { img: "img/artx.png", link: "../cloud-field.html", label: "Cloud Field" },
+  { img: "img/kantenbouki.png", link: "../pubs.html", label: "Publications" },
+  { img: "img/research_sq.png", link: "../research.html", label: "Research" },
+  { img: "img/nothing.jpg", link: "http://curareartspace.com/no-vision-2020", label: "#NoVision2020" },
+  { img: "img/writing.jpg", link: "../poetry.html", label: "Poetry" },
+  { img: "img/gscholar.png", link: "../fullcv_20250206.pdf", label: "Full CV" }
+];
+
+const TILE = 259;
+const ROW_HEIGHT = 259;
+const container = document.getElementById("container");
+
+function createRow(duration, reverse = false) {
+  const row = document.createElement("div");
+  row.className = "marquee-row";
+
+  const track = document.createElement("div");
+  track.className = "marquee-track";
+  track.style.animationDuration = duration + "s";
+  if (reverse) track.style.animationDirection = "reverse";
+
+  const tiles = Math.ceil(window.innerWidth / TILE) + 2;
+
+  for (let i = 0; i < tiles * 2; i++) {
+    const item = items[i % items.length];
+
+    const sq = document.createElement("div");
+    sq.className = "square";
+
+    const a = document.createElement("a");
+    a.href = item.link;
+    a.target = "_blank";
+
+    const img = document.createElement("img");
+    img.src = item.img;
+
+    const label = document.createElement("span");
+    label.className = "label";
+    label.textContent = item.label;
+
+    a.appendChild(img);
+    a.appendChild(label);
+    sq.appendChild(a);
+    track.appendChild(sq);
+  }
+
+  row.appendChild(track);
+  return row;
+}
+
+function populate() {
+  container.innerHTML = "";
+
+  const rows = Math.floor(window.innerHeight / ROW_HEIGHT);
+  const used = rows * ROW_HEIGHT;
+  const offset = Math.floor((window.innerHeight - used) / 2);
+
+  const grid = document.createElement("div");
+  grid.className = "marquee-grid";
+  grid.style.top = offset + "px";
+  grid.style.gridTemplateRows = `repeat(${rows}, 256px)`;
+
+  for (let i = 0; i < rows; i++) {
+    grid.appendChild(createRow(5 + i * 0.8, i % 2 === 0));
+  }
+
+  container.appendChild(grid);
+}
+
+populate();
+window.addEventListener("resize", populate);
+</script>
+
+</body>
+</html>
