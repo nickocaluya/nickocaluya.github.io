@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Publications</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Publications</h1>
+
+    <div class="filters">
+      <input type="text" id="search" placeholder="Search publications...">
+
+      <select id="yearFilter">
+        <option value="">All Years</option>
+      </select>
+
+      <select id="keywordFilter">
+        <option value="">All Keywords</option>
+      </select>
+    </div>
+  </header>
+
+  <main id="pubs"></main>
+
+  <script>
+    let allPubs = [];
+
+    fetch('./assets/publications.json')
+      .then(res => res.json())
+      .then(data => {
+        allPubs = data.map(normalize);
+        initFilters(allPubs);
+        render(allPubs);
+      });
+
+        function normalize(p) {
+      let year = "Unknown";
+
+      // CSL-JSON format (Zotero default)
+      if (p.issued && p.issued["date-parts"]) {
+        year = p.issued["date-parts"][0][0]; // first year value
+      }
+
+      // Fallback (if other formats exist)
+      else if (p.date) {
+        year = (p.date.match(/\d{4}/) || [])[0] || "Unknown";
+      }
+
+      const authors = (p.creators || p.author || [])
+  .map(a => {
+    if (a.family) return `${a.given} ${a.family || ""}`; // CSL format
+    return `${a.firstName || ""} ${a.lastName || ""}`;
+  })
+  .join(", ");
+
+      const keywords = (p.tags || p.keyword || [])
+        .map(k => k.tag || k);
+
+      const thumbnail =
+        p.thumbnail ||
+        p.attachments?.[0]?.url ||
+        "assets/thumbnail.png";
+
+        const doi =
+  p.DOI ||                     // sometimes exists directly
+  p.doi ||                     // lowercase variant
+  (p.URL && p.URL.includes("doi.org") ? p.URL : null);
+
+      return {
+        title: p.title || "Untitled",
+        authors,
+        year: String(year),
+        keywords,
+        thumbnail,
+        doi,
+        abstract: p.abstractNote || p.abstract || "",
+        raw: p
+      };
+    }
+
+    function initFilters(pubs) {
+      const years = [...new Set(pubs.map(p => p.year))].sort((a,b)=>b-a);
+      const keywords = [...new Set(pubs.flatMap(p => p.keywords))].sort();
+
+      years.forEach(y => {
+        document.getElementById("yearFilter").add(new Option(y, y));
+      });
+
+      keywords.forEach(k => {
+        document.getElementById("keywordFilter").add(new Option(k, k));
+      });
+
+      document.getElementById("search").oninput = applyFilters;
+      document.getElementById("yearFilter").onchange = applyFilters;
+      document.getElementById("keywordFilter").onchange = applyFilters;
+    }
+
+    function applyFilters() {
+      const search = document.getElementById("search").value.toLowerCase();
+      const year = document.getElementById("yearFilter").value;
+      const keyword = document.getElementById("keywordFilter").value;
+
+      const filtered = allPubs.filter(p => {
+        const matchSearch =
+          p.title.toLowerCase().includes(search) ||
+          p.authors.toLowerCase().includes(search) ||
+          p.keywords.join(" ").toLowerCase().includes(search);
+
+        const matchYear = !year || p.year === year;
+        const matchKeyword = !keyword || p.keywords.includes(keyword);
+
+        return matchSearch && matchYear && matchKeyword;
+      });
+
+      render(filtered);
+    }
+
+  
+  function render(pubs) {
+  const container = document.getElementById("pubs");
+  container.innerHTML = "";
+
+  const grouped = {};
+  pubs.forEach(p => {
+    if (!grouped[p.year]) grouped[p.year] = [];
+    grouped[p.year].push(p);
+  });
+
+  Object.keys(grouped)
+    .sort((a,b)=>b-a)
+    .forEach(year => {
+      const section = document.createElement("section");
+
+      section.innerHTML = `<h2 class="year">${year}</h2>`;
+      
+      grouped[year].forEach(p => {
+        const card = document.createElement("div");
+        card.className = "row-card";
+
+        card.innerHTML = `
+          <div class="thumb-wrapper">
+            <img src="${p.thumbnail}" onerror="this.src='assets/thumbnail.png'">
+          </div>
+
+          <div class="content">
+            <div class="title">${p.title}</div>
+            <div class="authors">${p.authors}</div>
+            
+
+            <div class="links">
+  ${
+    p.doi
+      ? `<a href="${p.doi.startsWith("http") ? p.doi : "https://doi.org/" + p.doi}"
+           target="_blank"
+           class="doi-link">
+           View Paper ↗
+         </a>`
+      : `<span class="no-link">No DOI available</span>`
+  }
+</div>
+
+            <!--div class="abstract"-->
+            <!--${p.raw?.abstractNote || "No abstract available."}-->
+            <!--/div-->
+
+            <div class="tags">
+              ${p.keywords.map(k => `<span class="tag">${k}</span>`).join("")}
+            </div>
+          </div>
+        `;
+
+        // Tag click filter
+        card.querySelectorAll(".tag").forEach(tag => {
+          tag.onclick = () => {
+            document.getElementById("keywordFilter").value = tag.innerText;
+            applyFilters();
+          };
+        });
+
+        section.appendChild(card);
+      });
+
+      container.appendChild(section);
+    });
+}
+</script>
+</body>
+</html>
